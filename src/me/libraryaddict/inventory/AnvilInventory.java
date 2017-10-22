@@ -3,17 +3,18 @@ package me.libraryaddict.inventory;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
+import com.google.common.base.Objects;
 import me.libraryaddict.inventory.events.AnvilClickEvent;
 import me.libraryaddict.inventory.events.AnvilTypeEvent;
-import net.minecraft.server.v1_7_R4.ContainerAnvil;
-import net.minecraft.server.v1_7_R4.EntityHuman;
-import net.minecraft.server.v1_7_R4.EntityPlayer;
-import net.minecraft.util.com.google.common.base.Objects;
 
+import net.minecraft.server.v1_12_R1.BlockPosition;
+import net.minecraft.server.v1_12_R1.ContainerAnvil;
+import net.minecraft.server.v1_12_R1.EntityHuman;
+import net.minecraft.server.v1_12_R1.EntityPlayer;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
@@ -28,11 +29,11 @@ public class AnvilInventory extends ClickInventory {
         private String n;
 
         public AnvilContainer(EntityHuman entity) {
-            super(entity.inventory, entity.world, 0, 0, 0, entity);
+            super(entity.inventory, entity.world, new BlockPosition(0, 0 ,0), entity);
         }
 
         @Override
-        public boolean a(EntityHuman entityhuman) {
+        public boolean canUse(EntityHuman entityhuman) {
             return true;
         }
 
@@ -46,10 +47,10 @@ public class AnvilInventory extends ClickInventory {
                 itemName = origString;
                 setItemName(newString);
                 if (getSlot(2).hasItem()) {
-                    net.minecraft.server.v1_7_R4.ItemStack itemstack = getSlot(2).getItem();
+                    net.minecraft.server.v1_12_R1.ItemStack itemstack = getSlot(2).getItem();
 
                     if (StringUtils.isBlank(newString))
-                        itemstack.t();
+                        itemstack.s();
                     else {
                         itemstack.c(this.n);
                     }

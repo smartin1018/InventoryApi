@@ -1,13 +1,12 @@
 package me.libraryaddict.inventory.events;
 
+import me.libraryaddict.inventory.AnvilInventory;
+import me.libraryaddict.inventory.AnvilInventory.AnvilSlot;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
-
-import me.libraryaddict.inventory.AnvilInventory;
-import me.libraryaddict.inventory.AnvilInventory.AnvilSlot;
 
 public class AnvilClickEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
